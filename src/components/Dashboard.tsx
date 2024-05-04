@@ -78,7 +78,7 @@ const Dashboard: React.FC<DashboardProps> = ({
     }
 
     return () => observer.disconnect();
-  }, [PaginationDivref?.current]);
+  }, []);
   console.log("data", data);
   const ships: Ship[] = data?.ships?.filter((ship: any) =>
     ship?.type
@@ -96,7 +96,7 @@ const Dashboard: React.FC<DashboardProps> = ({
       >
         {ships &&
           ships?.map((ship) => {
-            return <ShipCard ship={ship} />;
+            return <ShipCard ship={ship} key={ship?.id} />;
           })}
 
         {loading ? <Loader /> : null}
